@@ -1,11 +1,43 @@
-#define NIMBLE_DEBUG_DISABLED // Disable NimBLE logs (at compile time)
+// Disable NimBLE logs (at compile time)
+#define NIMBLE_DEBUG_DISABLED
 
+// ================================
+// Include Libraries
+// ================================
 #include <NimBLEDevice.h>
 #include <esp_log.h>
 #include <vector>
 #include <algorithm>
 
-// Struct to hold discovered device info
+// ================================
+// Pin Definitions
+// ================================
+#define SERIAL1_RX_PIN  D5 // GPIO5
+#define SERIAL1_TX_PIN  D4  // GPIO4
+
+// ================================
+// Serial Configuration
+// ================================
+// Initialize Serial Ports
+void initializeSerial() {
+    // Initialize USB Serial
+    Serial.begin(115200);
+    // Removed blocking wait
+    Serial.println("USB Serial started.");
+
+    // Initialize Serial1 for UART (TX: D5, RX: D4)
+    Serial1.begin(115200, SERIAL_8N1, SERIAL1_RX_PIN, SERIAL1_TX_PIN);
+    Serial.println("Serial1 started.");
+}
+
+// Function to check if USB Serial is connected
+bool isSerialConnected() {
+    return Serial && Serial.peek() >= 0;
+}
+
+// ================================
+// Device Information Struct
+// ================================
 struct DeviceInfo {
     std::string macAddress;
     int rssi;
@@ -13,26 +45,36 @@ struct DeviceInfo {
     unsigned long lastSeen;
 };
 
+// ================================
+// Global Variables
+// ================================
 // Track devices to avoid duplicates and for redetection
 std::vector<DeviceInfo> devices;
 
-// BLE Advertised Device Callback
+// ================================
+// BLE Advertised Device Callback Class
+// ================================
 class MyAdvertisedDeviceCallbacks : public NimBLEAdvertisedDeviceCallbacks {
+public:
     void onResult(NimBLEAdvertisedDevice* advertisedDevice) override {
         // Extract MAC address and RSSI
         std::string mac = advertisedDevice->getAddress().toString();
         int rssi = advertisedDevice->getRSSI();
         unsigned long currentMillis = millis();
 
-        // Log detected device to USB Serial
-        Serial.print("Detected device: ");
-        Serial.print(mac.c_str());
-        Serial.print(" RSSI: ");
-        Serial.println(rssi);
+        // Log detected device to USB Serial if connected
+        if (isSerialConnected()) {
+            Serial.print("Detected device: ");
+            Serial.print(mac.c_str());
+            Serial.print(" RSSI: ");
+            Serial.println(rssi);
+        }
 
-        // OUI Filtering: Place your OUI here "00:11:22" 
+        // OUI Filtering: Replace "00:11:22" with your desired OUI
         if (mac.rfind("00:11:22", 0) == 0) {
-            Serial.println("OUI match found!");
+            if (isSerialConnected()) {
+                Serial.println("OUI match found!");
+            }
 
             // Check if the device is already known
             bool known = false;
@@ -40,17 +82,21 @@ class MyAdvertisedDeviceCallbacks : public NimBLEAdvertisedDeviceCallbacks {
                 if (dev.macAddress == mac) {
                     known = true;
 
-                    // Debugging to check time since last seen
-                    Serial.print("Device already known. Time since last seen: ");
-                    Serial.print(currentMillis - dev.lastSeen);
-                    Serial.println(" ms");
+                    // Debugging: Time since last seen
+                    if (isSerialConnected()) {
+                        Serial.print("Device already known. Time since last seen: ");
+                        Serial.print(currentMillis - dev.lastSeen);
+                        Serial.println(" ms");
+                    }
 
                     // If redetected after 30 seconds, send redetection message
                     if (currentMillis - dev.lastSeen > 30000) {
                         Serial1.print("Redetection: Device ");
                         Serial1.println(mac.c_str());
                         Serial1.flush(); // Ensure UART buffer is sent
-                        Serial.println("Redetection message sent to Serial1.");
+                        if (isSerialConnected()) {
+                            Serial.println("Redetection message sent to Serial1.");
+                        }
                     }
 
                     // Update the lastSeen timestamp
@@ -65,15 +111,20 @@ class MyAdvertisedDeviceCallbacks : public NimBLEAdvertisedDeviceCallbacks {
                 devices.push_back(newDev);
 
                 // Send detection message to Serial1
-                Serial1.print("Device detected: ");
+                Serial1.print("Device Detected: ");
                 Serial1.println(mac.c_str());
                 Serial1.flush(); // Ensure UART buffer is sent
-                Serial.println("Sent message to Serial1.");
+                if (isSerialConnected()) {
+                    Serial.println("Sent message to Serial1.");
+                }
             }
         }
     }
 };
 
+// ================================
+// Setup Function
+// ================================
 void setup() {
     // Short delay for boot stability
     delay(2000);
@@ -81,20 +132,19 @@ void setup() {
     // Silence all ESP-IDF logs
     esp_log_level_set("*", ESP_LOG_NONE);
 
-    // Initialize USB Serial
-    Serial.begin(115200);
-    Serial.println("USB Serial started.");
-
-    // Initialize Serial1 for UART (TX: D6, RX: D7)
-    Serial1.begin(115200, SERIAL_8N1, D7, D6); // TX = GPIO6, RX = GPIO7
-    Serial.println("Serial1 started.");
+    // Initialize Serial Ports
+    initializeSerial();
 
     // Initialize NimBLE
     NimBLEDevice::init("");
-    Serial.println("NimBLE initialized.");
+    if (isSerialConnected()) {
+        Serial.println("NimBLE initialized.");
+    }
 
     // 5-second pause before starting BLE scan
-    Serial.println("Pausing for 5 seconds before starting BLE scan...");
+    if (isSerialConnected()) {
+        Serial.println("Pausing for 5 seconds before starting BLE scan...");
+    }
     delay(5000);
 
     // Start BLE Scanning
@@ -103,9 +153,14 @@ void setup() {
     pScan->setActiveScan(true); // Enable active scanning for detailed data
     pScan->start(0, nullptr, false); // Start continuous scanning
 
-    Serial.println("BLE scan started (continuous).");
+    if (isSerialConnected()) {
+        Serial.println("BLE scan started (continuous).");
+    }
 }
 
+// ================================
+// Loop Function
+// ================================
 void loop() {
     // Nothing to process in the loop; BLE scanning runs in the background
 }
