@@ -1,4 +1,4 @@
-# ESP32 OUI Sniffer
+# Mesh Detect esp32-oui-sniffer
 
 This project uses a Seedstudio Xiao esp32-C3 and a Heltec Lora V3 to send BLE OUI detections over the LoRa mesh network of your choice.
 
