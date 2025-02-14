@@ -11,6 +11,7 @@ This build allows a user to scan for a specific oui or group of ouis via ble. If
 - Seedstudio Xiao esp32-C3
 - Heltec Lora V3
 - Meshtastic framework (if applicable)
+- Nimble 1.4.3 ble library in Arduino IDE
 
 ## Setup
 
