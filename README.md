@@ -1,4 +1,4 @@
-# Mesh Detect esp32-oui-sniffer
+# Mesh Detect esp32 OUI Sniffer
 
 This project uses a Seedstudio Xiao esp32-C3 and a Heltec Lora V3 to send BLE OUI detections over the LoRa mesh network of your choice.
 
@@ -25,7 +25,7 @@ On Line 73, replace the placeholder OUI (00:11:22) with the OUI(s) of your desir
 
 ## Usage
 
-Flash Meshtastic firmware to Heltec board. Flash Xiao board with <<>> . Power the device via the Xiao esp32 usb-c port. 
+Flash Meshtastic firmware to Heltec board. Flash Xiao board with meshdetect.ino. Power the device via the Xiao esp32 usb-c port. 
 
 ## Contributing
 
