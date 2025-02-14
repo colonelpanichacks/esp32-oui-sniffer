@@ -4,7 +4,7 @@ This project uses a Seedstudio Xiao esp32-C3 and a Heltec Lora V3 to send BLE OU
 
 ## Background
 
-This project allows a user to scan for a specific oui or group of ouis via ble. If a specified device is detected, a message is sent to the Heltec Lora V3 board and distributed over your Lora mesh network such as Meshtastic. 
+This build allows a user to scan for a specific oui or group of ouis via ble. If a specified device is detected, a message is sent to the Heltec Lora V3 board and distributed over a Lora mesh network such as Meshtastic. 
 
 ## Requirements
 
