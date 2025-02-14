@@ -25,7 +25,7 @@ On Line 73, replace the placeholder OUI (00:11:22) with the OUI(s) of your desir
 
 ## Usage
 
-Power the device via the Xiao esp32 usb-c port. 
+Flash Meshtastic firmware to Heltec board. Flash Xiao board with <<>> . Power the device via the Xiao esp32 usb-c port. 
 
 ## Contributing
 
