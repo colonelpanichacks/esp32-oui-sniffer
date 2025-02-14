@@ -31,4 +31,5 @@ Flash Meshtastic firmware to Heltec board. Flash Xiao board with meshdetect.ino.
 
 If you would like to contribute, please fork the repository and use a feature branch. Pull requests are welcome.
 
+## Order a PCB for this project on my Tindie store 
 <a href="https://www.tindie.com/stores/colonel_panic/?ref=offsite_badges&utm_source=sellers_colonel_panic&utm_medium=badges&utm_campaign=badge_large"><img src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-larges.png" alt="I sell on Tindie" width="200" height="104"></a>
