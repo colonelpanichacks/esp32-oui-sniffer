@@ -18,7 +18,9 @@ This build allows a user to scan for a specific oui or group of ouis via ble. If
 If using Meshtastic framework, you must set your Heltec device serial settings to:
 - TextMessage
 - 115200 baud
-- Pins: Rx 19 and Tx 20 on the Heltec board
+- Pins: Rx 19 and Tx 20 on  the Heltec board
+![serial](https://github.com/user-attachments/assets/b19a0d01-699f-4718-9624-1bb66ef09085)
+
 
 ## OUI Filtering
 
