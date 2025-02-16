@@ -15,11 +15,11 @@ and distributed over a LoRa mesh network such as Meshtastic.
 
 ## Setup
 1. Flash meshdetect.ino to your Xiao board via Arduino IDE.
-2. Flash Meshtastic flash your Heltec board with latest firmware at [flasher.meshtastic.org](https://flasher.meshtastic.org)
-3. If using Meshtastic, configure your Heltec device serial settings:
+2. Flash your Heltec board with latest Meshtastic firmware at [flasher.meshtastic.org](https://flasher.meshtastic.org)
+3. In Meshtasic app, configure your Heltec device serial module settings:
    - TextMessage
    - 115200 baud
-   - Pins: Rx 19 (Xiao TX) and Tx 20 (Xiao RX) on the Heltec board
+   - Pins: Rx 19 and Tx 20 on the Heltec board
 
 ## Serial Connection
 <img src="https://raw.githubusercontent.com/colonelpanichacks/esp32-oui-sniffer/Xiao-esp32-c3-serial/serial.jpg" alt="Serial Connection" width="400">
