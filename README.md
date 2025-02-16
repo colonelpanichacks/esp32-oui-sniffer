@@ -10,12 +10,13 @@ and distributed over a LoRa mesh network such as Meshtastic.
 ## Requirements
 - Seedstudio Xiao esp32-C3
 - Heltec Lora V3
-- Meshtastic framework (if applicable)
+- Meshtastic framework or other lora mesh framework
 - Nimble 1.4.3 BLE library in Arduino IDE
 
 ## Setup
 1. Flash meshdetect.ino to your Xiao board via Arduino IDE.
-2. If using Meshtastic, configure your Heltec device serial settings:
+2. Flash Meshtastic flash your Heltec board with latest firmware at <a href="https://flasher.meshtastic.org">
+3. If using Meshtastic, configure your Heltec device serial settings:
    - TextMessage
    - 115200 baud
    - Pins: Rx 19 (Xiao TX) and Tx 20 (Xiao RX) on the Heltec board
