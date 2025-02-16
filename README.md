@@ -19,7 +19,7 @@ If using Meshtastic framework, you must set your Heltec device serial settings t
 - TextMessage
 - 115200 baud
 - Pins: Rx 19 and Tx 20 on  the Heltec board
-![serial](https://github.com/user-attachments/assets/b19a0d01-699f-4718-9624-1bb66ef09085)
+<img src="https://github.com/colonelpanichacks/esp32-oui-sniffer/edit/Xiao-esp32-c3-serial/serial.jpg" alt="Description" width="400" height="300">
 
 
 ## OUI Filtering
