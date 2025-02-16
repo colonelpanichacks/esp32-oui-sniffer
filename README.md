@@ -12,7 +12,7 @@ If the specified device is detected, a message is sent to the Heltec Lora V3 and
 
 ## Setup
 1. Edit **Line 74** in `meshdetect.ino`, replacing `00:11:22` with the OUI(s) of your target devices.
-2. If are not using the Mesh Detect pcb, connect pins Rx 19 and Tx 20 of the Heltec board to D4 Tx to D5 Rx on the Xiao esp32 board.
+2. If are not using the Mesh Detect pcb, connect pins Rx 19 and Tx 20 of the Heltec board to Tx D4 and Rx D5 on the Xiao esp32 board.
 3. Flash meshdetect.ino to your Xiao board via Arduino IDE.
 4. Flash your Heltec board with latest Meshtastic firmware at [flasher.meshtastic.org](https://flasher.meshtastic.org) and set reagion to US
 5. In Meshtasic app, configure your Heltec device serial module settings:
