@@ -14,9 +14,10 @@ and distributed over a LoRa mesh network such as Meshtastic.
 - Nimble 1.4.3 BLE library in Arduino IDE
 
 ## Setup
-1. Flash meshdetect.ino to your Xiao board via Arduino IDE.
-2. Flash your Heltec board with latest Meshtastic firmware at [flasher.meshtastic.org](https://flasher.meshtastic.org)
-3. In Meshtasic app, configure your Heltec device serial module settings:
+1. Edit **Line 74** in `meshdetect.ino`, replacing `00:11:22` with the OUI(s) of your target devices.
+2. Flash meshdetect.ino to your Xiao board via Arduino IDE.
+3. Flash your Heltec board with latest Meshtastic firmware at [flasher.meshtastic.org](https://flasher.meshtastic.org) and set reagion to US
+4. In Meshtasic app, configure your Heltec device serial module settings:
    - TextMessage
    - 115200 baud
    - Pins: Rx 19 and Tx 20 on the Heltec board
@@ -25,10 +26,8 @@ and distributed over a LoRa mesh network such as Meshtastic.
 <img src="https://raw.githubusercontent.com/colonelpanichacks/esp32-oui-sniffer/Xiao-esp32-c3-serial/serial.jpg" alt="Serial Connection" width="400">
 
 ## Usage
-1. Flash Meshtastic firmware to Heltec board.
-2. Edit **Line 74** in `meshdetect.ino`, replacing `00:11:22` with the OUI(s) of your target devices.
-3. Flash Xiao board with `meshdetect.ino`.
-4. Power the device via the Xiao ESP32 USB-C port.
+1. Put device on mesh channel of your choice. 
+2. Power the device via the Xiao ESP32 USB-C port. Ble scanner will continiously sends a serial message over meshtastic if your target device/devices are detected
 
 ## Contributing
 Fork the repository and use a feature branch. Pull requests welcome.
