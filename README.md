@@ -24,13 +24,11 @@ and distributed over a LoRa mesh network such as Meshtastic.
 ## Serial Connection
 <img src="https://raw.githubusercontent.com/colonelpanichacks/esp32-oui-sniffer/Xiao-esp32-c3-serial/serial.jpg" alt="Serial Connection" width="400">
 
-## OUI Filtering
-Edit **Line 74** in `meshdetect.ino`, replacing `00:11:22` with the OUI(s) of your target devices.
-
 ## Usage
 1. Flash Meshtastic firmware to Heltec board.
-2. Flash Xiao board with `meshdetect.ino`.
-3. Power the device via the Xiao ESP32 USB-C port.
+2. Edit **Line 74** in `meshdetect.ino`, replacing `00:11:22` with the OUI(s) of your target devices.
+3. Flash Xiao board with `meshdetect.ino`.
+4. Power the device via the Xiao ESP32 USB-C port.
 
 ## Contributing
 Fork the repository and use a feature branch. Pull requests welcome.
