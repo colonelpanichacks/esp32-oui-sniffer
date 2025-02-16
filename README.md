@@ -1,11 +1,8 @@
 # Mesh Detect
 Esp32 OUI Sniffer
 
-This project uses a Seedstudio Xiao esp32-C3 and a Heltec Lora V3 
-to send BLE OUI detections over a LoRa mesh network. 
-It scans for a specific OUI or group of OUIs via BLE. 
-If a specified device is detected, a message is sent to the Heltec Lora V3 
-and distributed over a LoRa mesh network such as Meshtastic.
+This project uses a Seedstudio Xiao esp32-C3 to scan for a specific OUI or group of OUIs via ble. 
+If the specified device is detected, a message is sent to the Heltec Lora V3 and distributed over a LoRa mesh network such as Meshtastic.
 
 ## Requirements
 - Seedstudio Xiao esp32-C3
@@ -15,12 +12,14 @@ and distributed over a LoRa mesh network such as Meshtastic.
 
 ## Setup
 1. Edit **Line 74** in `meshdetect.ino`, replacing `00:11:22` with the OUI(s) of your target devices.
-2. Flash meshdetect.ino to your Xiao board via Arduino IDE.
-3. Flash your Heltec board with latest Meshtastic firmware at [flasher.meshtastic.org](https://flasher.meshtastic.org) and set reagion to US
-4. In Meshtasic app, configure your Heltec device serial module settings:
+2. If are not using the Mesh Detect pcb, connect pins Rx 19 and Tx 20 to 
+3. Flash meshdetect.ino to your Xiao board via Arduino IDE.
+4. Flash your Heltec board with latest Meshtastic firmware at [flasher.meshtastic.org](https://flasher.meshtastic.org) and set reagion to US
+5. In Meshtasic app, configure your Heltec device serial module settings:
    - TextMessage
    - 115200 baud
    - Pins: Rx 19 and Tx 20 on the Heltec board
+   
 
 ## Serial Connection
 <img src="https://raw.githubusercontent.com/colonelpanichacks/esp32-oui-sniffer/Xiao-esp32-c3-serial/serial.jpg" alt="Serial Connection" width="400">
