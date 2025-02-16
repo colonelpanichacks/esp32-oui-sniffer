@@ -15,7 +15,7 @@ and distributed over a LoRa mesh network such as Meshtastic.
 
 ## Setup
 1. Flash meshdetect.ino to your Xiao board via Arduino IDE.
-2. Flash Meshtastic flash your Heltec board with latest firmware at <a href="https://flasher.meshtastic.org">
+2. Flash Meshtastic flash your Heltec board with latest firmware at [flasher.meshtastic.org](https://flasher.meshtastic.org)
 3. If using Meshtastic, configure your Heltec device serial settings:
    - TextMessage
    - 115200 baud
