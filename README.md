@@ -10,7 +10,7 @@ If the specified device is detected, a message is sent to the Heltec Lora V3 and
 - Meshtastic framework or other lora mesh framework
 - Nimble 1.4.3 BLE library in Arduino IDE
 - You need other devices on your mesh channel to recieve the alerts from this device. I highly reccomend using a Sensecap Lorawan Card Tracker from Seeedstudio
-  https://www.seeedstudio.com/SenseCAP-Card-Tracker-T1000-A-p-5697.html?srsltid=AfmBOopyYwh78Goy-2IX5s4WT_R39eBev0DrI8lO63fVTev7Cuew1bTX
+  https://www.seeedstudio.com/SenseCAP-Card-Tracker-T1000-A-p-5697.html
 
 ## Setup
 1. Edit **Line 74** in `meshdetect.ino`, replacing `00:11:22` with the OUI(s) of your target devices.
